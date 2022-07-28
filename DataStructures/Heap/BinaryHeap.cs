@@ -134,18 +134,16 @@ namespace DataStructures.Heap
         {
             if (position == 0)
             {
-                throw new IndexOutOfRangeException("Overflow !");
+                throw new IndexOutOfRangeException("Underflow !");
             }
-            else
-            {
-                var temp = Array[0];
-                Array[0] = Array[position-1];//son elemanı atadık köke
-                position--;
-                Count--;
-                HeapifyDown();
 
-                return temp;
-            }
+            var temp = Array[0];
+            Array[0] = Array[position-1];//son elemanı atadık köke
+            position--;
+            Count--;
+            HeapifyDown();
+
+            return temp;
         }
         /*
         protected abstract void HeapifyUp();// abstract yaparak farklı sınıflarda da kullanabileceğimizi

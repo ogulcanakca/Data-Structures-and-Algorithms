@@ -4,6 +4,7 @@
 
 using DataStructures.Graph;
 using DataStructures.Graph.AdjancencySet;
+using DataStructures.Graph.MinimumSpanningTree;
 using DataStructures.Graph.Search;
 using DataStructures.Queue;
 using DataStructures.Stack;
@@ -19,29 +20,50 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-
-            var graph = new Graph<int>();
+            var graph = new WeightedGraph<int, int>();
             for (int i = 0; i < 12; i++)
             {
                 graph.AddVertex(i);
             }
-            graph.AddEdge(0, 1);
-            graph.AddEdge(1, 4);
-            graph.AddEdge(0, 4);
-            graph.AddEdge(0, 2);
-            graph.AddEdge(2, 5);
-            graph.AddEdge(2, 10);
-            graph.AddEdge(10, 11);
-            graph.AddEdge(11, 9);
-            graph.AddEdge(2, 9);
-            graph.AddEdge(5, 7);
-            graph.AddEdge(7, 8);
-            graph.AddEdge(5, 8);
-            graph.AddEdge(5, 6);
+            graph.AddEdge(0, 1,4);
+            graph.AddEdge(0, 7,8);
+            graph.AddEdge(1, 7,11);
+            graph.AddEdge(1, 2,8);
+            graph.AddEdge(7, 8,7);
+            graph.AddEdge(7, 6,1);
+            graph.AddEdge(6, 8,6);
+            graph.AddEdge(2, 8,2);
+            graph.AddEdge(2, 3,7);
+            graph.AddEdge(2, 5,4);
+            graph.AddEdge(6, 5,2);
+            graph.AddEdge(3, 5,14);
+            graph.AddEdge(3, 4,9);
+            graph.AddEdge(5, 4, 10);
 
-            var algorhythm = new BreadthFirst<int>();
+            var algorhythm = new Prims<int, int>();
+            algorhythm.FindMinimumSpanningTree(graph).ForEach(edge => Console.WriteLine(edge) /*to string i override ettik ya rahatız. */);
+            //var graph = new Graph<int>();
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    graph.AddVertex(i);
+            //}
+            //graph.AddEdge(0, 1);
+            //graph.AddEdge(1, 4);
+            //graph.AddEdge(0, 4);
+            //graph.AddEdge(0, 2);
+            //graph.AddEdge(2, 5);
+            //graph.AddEdge(2, 10);
+            //graph.AddEdge(10, 11);
+            //graph.AddEdge(11, 9);
+            //graph.AddEdge(2, 9);
+            //graph.AddEdge(5, 7);
+            //graph.AddEdge(7, 8);
+            //graph.AddEdge(5, 8);
+            //graph.AddEdge(5, 6);
 
-            Console.WriteLine("{0}", algorhythm.Find(graph, 23) ? "Yes." : "No!");
+            //var algorhythm = new BreadthFirst<int>();
+
+            //Console.WriteLine("{0}", algorhythm.Find(graph, 23) ? "Yes." : "No!");
             //Console.WriteLine("{0}", algorhythm.Find(graph, 5) ? "Yes." : "No!");
             //    var graph = new Graph<int>();
             //    for (int i = 0; i <= 11; i++)

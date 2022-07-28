@@ -34,12 +34,13 @@ namespace DataStructures.Graph.MinimumSpanningTree
                 while (spVertices.Contains(minEdge.Source) && spVertices.Contains(minEdge.Destination))//Bu ifadeler var iken döngü çalışacak ama varsa ikinci en küçük elemanı çağır demek. 
                 {                                                                                      // yani var olan bir şey varsa atlıyoruz ta ki spNeighbours'ta bir şey kalmayana kadar
                     minEdge = spNeighbours.DeleteMinMax();                                              //devam et dedik. Sonuçta minEdge'i bulduk. Aşağıda iflerde attık içeriye.
+                    if (spNeighbours.Count == 0)
+                    {
+                        return;
+                    }
                 }
 
-                if (spNeighbours.Count==0)
-                {
-                    return;
-                } 
+                
                 // Bu scopelar arasında min edge bulduk.
 
                 if (!spVertices.Contains(minEdge.Source))
@@ -56,4 +57,5 @@ namespace DataStructures.Graph.MinimumSpanningTree
             }
         }
     }
+
 }
