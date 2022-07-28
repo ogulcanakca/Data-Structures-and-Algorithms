@@ -4,6 +4,7 @@
 
 using DataStructures.Graph;
 using DataStructures.Graph.AdjancencySet;
+using DataStructures.Graph.Search;
 using DataStructures.Queue;
 using DataStructures.Stack;
 using DataStructures.Tree.BinarySearchTree;
@@ -18,40 +19,88 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-            var graph = new WeightedDiGraph<char, int>(new char[]
-            {
-                'A', 'B', 'C', 'D', 'E'
-            });
-            Console.WriteLine($"Number of vertex in this graph: {graph.Count}");
-            Console.WriteLine($"Is there any edge between A and B ? " +
-                                  $" {(graph.HasEdge('A', 'B') ? "Yes." : "No.")}");
-            Console.WriteLine($"Is there any edge between B and A ? " +
-                              $" {(graph.HasEdge('B', 'A') ? "Yes." : "No.")}");
-            foreach (char vertexkey in graph)
-            {
-                Console.WriteLine(vertexkey);
-            }
-            graph.AddEdge('A', 'C',12);
-            graph.AddEdge('A', 'D',60);
-            graph.AddEdge('B', 'A',10);
-            graph.AddEdge('C', 'D',32);
-            graph.AddEdge('C', 'B',20);
-            graph.AddEdge('E', 'A',7);
 
-            foreach (var vertexKey in graph)
+            var graph = new Graph<int>();
+            for (int i = 0; i < 12; i++)
             {
-                Console.WriteLine(vertexKey);
-                foreach (char key in graph.GetVertex(vertexKey))
-                {
-                    var nodeU = graph.GetVertex(vertexKey);
-                    var nodeV = graph.GetVertex(key);
-                    var w = nodeU.GetEdge(nodeV).Weight<int>();
-                    Console.WriteLine(($"({vertexKey/*ya da nodeU.key*/}) -"+
-                                       $"({w })-"+
-                                       $"({key /*ya da nodeV.key*/})"));
-                }
-
+                graph.AddVertex(i);
             }
+            graph.AddEdge(0, 1);
+            graph.AddEdge(1, 4);
+            graph.AddEdge(0, 4);
+            graph.AddEdge(0, 2);
+            graph.AddEdge(2, 5);
+            graph.AddEdge(2, 10);
+            graph.AddEdge(10, 11);
+            graph.AddEdge(11, 9);
+            graph.AddEdge(2, 9);
+            graph.AddEdge(5, 7);
+            graph.AddEdge(7, 8);
+            graph.AddEdge(5, 8);
+            graph.AddEdge(5, 6);
+
+            var algorhythm = new BreadthFirst<int>();
+
+            Console.WriteLine("{0}", algorhythm.Find(graph, 23) ? "Yes." : "No!");
+            //Console.WriteLine("{0}", algorhythm.Find(graph, 5) ? "Yes." : "No!");
+            //    var graph = new Graph<int>();
+            //    for (int i = 0; i <= 11; i++)
+            //    {
+            //        graph.AddVertex(i);
+            //    }
+            //    graph.AddEdge(0,1);
+            //    graph.AddEdge(1, 4);
+            //    graph.AddEdge(0, 4);
+            //    graph.AddEdge(0, 2);
+            //    graph.AddEdge(2, 5); 
+            //    graph.AddEdge(2, 10);
+            //    graph.AddEdge(10, 11);
+            //    graph.AddEdge(11, 9);
+            //    graph.AddEdge(2, 9);
+            //    graph.AddEdge(5, 7);
+            //    graph.AddEdge(7, 8);
+            //    graph.AddEdge(5, 8);
+            //    graph.AddEdge(5, 6);
+
+            //    var algorhythm = new DepthFirst<int>();
+
+            //    Console.WriteLine("{0}", algorhythm.Find(graph, 100) ? "Yes." : "No!");
+            //    Console.WriteLine("{0}", algorhythm.Find(graph, 5) ? "Yes." : "No!");
+
+            //var graph = new WeightedDiGraph<char, int>(new char[]
+            //{
+            //    'A', 'B', 'C', 'D', 'E'
+            //});
+            //Console.WriteLine($"Number of vertex in this graph: {graph.Count}");
+            //Console.WriteLine($"Is there any edge between A and B ? " +
+            //                      $" {(graph.HasEdge('A', 'B') ? "Yes." : "No.")}");
+            //Console.WriteLine($"Is there any edge between B and A ? " +
+            //                  $" {(graph.HasEdge('B', 'A') ? "Yes." : "No.")}");
+            //foreach (char vertexkey in graph)
+            //{
+            //    Console.WriteLine(vertexkey);
+            //}
+            //graph.AddEdge('A', 'C',12);
+            //graph.AddEdge('A', 'D',60);
+            //graph.AddEdge('B', 'A',10);
+            //graph.AddEdge('C', 'D',32);
+            //graph.AddEdge('C', 'B',20);
+            //graph.AddEdge('E', 'A',7);
+
+            //foreach (var vertexKey in graph)
+            //{
+            //    Console.WriteLine(vertexKey);
+            //    foreach (char key in graph.GetVertex(vertexKey))
+            //    {
+            //        var nodeU = graph.GetVertex(vertexKey);
+            //        var nodeV = graph.GetVertex(key);
+            //        var w = nodeU.GetEdge(nodeV).Weight<int>();
+            //        Console.WriteLine(($"({vertexKey/*ya da nodeU.key*/}) -"+
+            //                           $"({w })-"+
+            //                           $"({key /*ya da nodeV.key*/})"));
+            //    }
+
+            //}
 
             //static void Main(string[] args)
             //{

@@ -205,6 +205,11 @@ namespace DataStructures.Graph
             {
                 return new Edge<T, int>(targetVertex, 1);
             }
+
+            public override string ToString()
+            {
+                return $"{Key}";
+            }
         }
     }
 }
