@@ -13,6 +13,7 @@ using DataStructures.Tree.BinaryTree;
 using DataStructures.Heap;
 using DataStructures.Set;
 using DataStructures.Shared;
+using DataStructures.SortingAlgorithms;
 
 namespace Apps
 {
@@ -20,33 +21,133 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-            //Grap oluşturuldu.
-            var graph = new WeightedGraph<int, int>();
 
-            //Vertex'ler oluşturuldu.
-            for (int i = 0; i < 12; i++)
+            var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            foreach (var item in array)
             {
-                graph.AddVertex(i);
+                Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
             }
 
-            //Kenarlar oluşturuldu.
-            graph.AddEdge(0, 1, 4);
-            graph.AddEdge(0, 7, 8);
-            graph.AddEdge(1, 7, 11);
-            graph.AddEdge(1, 2, 8);
-            graph.AddEdge(7, 8, 7);
-            graph.AddEdge(7, 6, 1);
-            graph.AddEdge(6, 8, 6);
-            graph.AddEdge(2, 8, 2);
-            graph.AddEdge(2, 3, 7);
-            graph.AddEdge(2, 5, 4);
-            graph.AddEdge(6, 5, 2);
-            graph.AddEdge(3, 5, 14);
-            graph.AddEdge(3, 4, 9);
-            graph.AddEdge(5, 4, 10);
+            var heap = new MinHeap<int>(array);
+            Console.WriteLine();
+            foreach (var item in heap)
+            {
+                Console.Write($"{heap.DeleteMinMax,-5/* 5 tane boşluk bıraktık*/}");
+            }
+            //var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
 
-            var algorhythm = new Kruskals<int, int>();
-            algorhythm.FindMinimumSpanningTree(graph).ForEach(edge => Console.WriteLine(edge) /*to string i override ettik ya rahatız. */);
+            //MergeSort.Sort<int>(array);
+            //Console.WriteLine();
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+
+            //QuickSort.Sort<int>(array);
+            //Console.WriteLine();
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+
+            //var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //InsertionSort.Sort<int>(array, SortDirection.Descending);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //InsertionSort.Sort<int>(array, SortDirection.Ascending);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //BubbleSort.Sort<int>(array, SortDirection.Descending);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //BubbleSort.Sort<int>(array, SortDirection.Ascending);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //SelectionSort.Sort<int>(array,SortDirection.Descending);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //SelectionSort.Sort<int>(array, SortDirection.Ascending);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            //Console.WriteLine();
+            //SelectionSort.Sort<int>(array);
+            //foreach (var item in array)
+            //{
+            //    Console.Write($"{item,-5/* 5 tane boşluk bıraktık*/}");
+            //}
+            ////Grap oluşturuldu.
+            //var graph = new WeightedGraph<int, int>();
+
+            ////Vertex'ler oluşturuldu.
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    graph.AddVertex(i);
+            //}
+
+            ////Kenarlar oluşturuldu.
+            //graph.AddEdge(0, 1, 4);
+            //graph.AddEdge(0, 7, 8);
+            //graph.AddEdge(1, 7, 11);
+            //graph.AddEdge(1, 2, 8);
+            //graph.AddEdge(7, 8, 7);
+            //graph.AddEdge(7, 6, 1);
+            //graph.AddEdge(6, 8, 6);
+            //graph.AddEdge(2, 8, 2);
+            //graph.AddEdge(2, 3, 7);
+            //graph.AddEdge(2, 5, 4);
+            //graph.AddEdge(6, 5, 2);
+            //graph.AddEdge(3, 5, 14);
+            //graph.AddEdge(3, 4, 9);
+            //graph.AddEdge(5, 4, 10);
+
+            //var algorhythm = new Kruskals<int, int>();
+            //algorhythm.FindMinimumSpanningTree(graph).ForEach(edge => Console.WriteLine(edge) /*to string i override ettik ya rahatız. */);
             //var graph = new WeightedGraph<int, int>();
             //for (int i = 0; i < 12; i++)
             //{
